@@ -15,6 +15,7 @@ services:
   node:
     restart: on-failure
     build: ./node
+    entrypoint: dockerize -wait tcp://mysqldb:3306 -timeout 20s npm start
     ports:
       - '81:5000'
     environment:
